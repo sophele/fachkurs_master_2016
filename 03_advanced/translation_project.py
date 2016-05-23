@@ -1,7 +1,7 @@
 import random
 import sys
 
-class BioMolecule(object):
+class BioMolecule():
     """
     A generic molecule that has basic attributes like id, name and
     mass.
