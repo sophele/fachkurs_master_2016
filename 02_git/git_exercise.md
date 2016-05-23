@@ -16,4 +16,11 @@ HU Berlin
   ```
   you will get it formatted automatically on Github and many other places. Very handy!
 3. add this file to the repo and commit it.
-4. If you forked the repository previously you can now push it to your Github accout.
+4. If you forked the repository previously you can now push it to your
+  Github accout.
+5. set the upstream repo using the following command:
+
+   `git remote add upstream https://github.com/tbphu/fachkurs_master_2016`
+
+6. pull changes from upstream by using:
+   `git pull upstream`
