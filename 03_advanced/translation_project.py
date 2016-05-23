@@ -163,7 +163,7 @@ class Ribosome(BioMolecule):
         return self.nascent_prot
         
 
-class Cell(object):
+class Cell:
     def __init__(self):
         self.ribosomes = [Ribosome(i, 'Ribo_{0}'.format(i)) for i in range(200)]
         self.mrnas = [MRNA(i, 'MRNA_{0}'.format(i), "UUUUUUUUUUAA") for i in range(20)]
