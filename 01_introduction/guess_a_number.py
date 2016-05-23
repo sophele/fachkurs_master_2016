@@ -69,7 +69,7 @@ def demo_a_number(random_number):
         else:
             print('That was too low.')
             upper_bound = current_number
-        current_number = (lower_bound + upper_bound) / 2
+        current_number = (lower_bound + upper_bound) // 2
     else:
         print(('The computer guessed {}\nThat was right! \
         After {} guesses'.format(current_number, count_computer_guesses)))
