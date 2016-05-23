@@ -10,7 +10,7 @@ class BioMolecule():
     @type name: str
     @type mass: float
     """
-    def __init__(self, id, name, mass=None):
+    def __init__(self, id, name, mass=0.):
         self._id = id
         self.name = name
         self.mass = mass
@@ -29,7 +29,7 @@ class Polymer(BioMolecule):
     @type sequence: str
     @type mass: float
     """
-    def __init__(self, id, name, sequence, mass=None):
+    def __init__(self, id, name, sequence, mass=0.):
         # 3. Initialize the parent class correctly
         self._sequence = sequence
 
@@ -51,7 +51,7 @@ class Polymer(BioMolecule):
 
 
 class MRNA(Polymer):
-    def __init__(self, id, name, sequence, mass=None):
+    def __init__(self, id, name, sequence, mass=0.):
         # 6. Initialize the parent class correctly
 
         # 7. Create a list that stores if a ribosome is bound for each
@@ -78,8 +78,8 @@ class Protein(Polymer):
     """
     number_of_proteins = 0  # init instance counter
 
-    def __init__(self, id, name, sequence, mass=None):
-        super(Protein, self).__init__(id, name, sequence, mass)
+    def __init__(self, id, name, sequence, mass=0.):
+        super().__init__(id, name, sequence, mass)
         self.__class__.number_of_proteins += 1 #  increase instance counter
         self.mass = self.calculate_mass()
 
@@ -124,7 +124,7 @@ class Ribosome(BioMolecule):
                  ('GGA','G'), ('GGG','G'), ('GGC','G'), ('GGU','G')])
 
     def __init__(self, id, name):
-        super(Ribosome, self).__init__(id, name)
+        super().__init__(id, name)
         self.bound_mrna = False
         self.position = None  # position on a bound MRNA
 
@@ -171,7 +171,7 @@ class Cell(object):
 
     def step(self):
         for r in self.ribosomes:
-            if not r.bound:
+            if not r.bound_mrna:
                 r.initiate(self.mrnas[random.randint(0,len(self.mrnas)-1)])
             else:
                 prot = r.elongate()
