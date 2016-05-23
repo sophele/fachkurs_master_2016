@@ -11,7 +11,7 @@ class BioMolecule():
     @type mass: float
     """
     def __init__(self, id, name, mass=0.):
-        self._id = id
+        self.id = id
         self.name = name
         self.mass = mass
 
@@ -31,7 +31,7 @@ class Polymer(BioMolecule):
     """
     def __init__(self, id, name, sequence, mass=0.):
         # 3. Initialize the parent class correctly
-        self._sequence = sequence
+        self.sequence = sequence
 
     
     # 4. Write getter and setter for sequence, again check for type
@@ -39,7 +39,7 @@ class Polymer(BioMolecule):
     def __getitem__(self, value):
         """
         Makes the sequence accessible via the indexing operators:
-<        p[10] returns the tenth character in the sequence.
+        p[10] returns the tenth character in the sequence.
         """
         return self.sequence[value]
 
@@ -47,7 +47,9 @@ class Polymer(BioMolecule):
         """
          Enables changing of sequence characters via the indexing operators.       
         """
-        self.sequence[key] = value
+        tmp = list(sequence)
+        tmp[key] = value
+        self.sequence = "".join(tmp)
 
 
 class MRNA(Polymer):
@@ -73,8 +75,6 @@ class Protein(Polymer):
     >> protein.sequence
     MVFTA
 
-    
-    
     """
     number_of_proteins = 0  # init instance counter
 
