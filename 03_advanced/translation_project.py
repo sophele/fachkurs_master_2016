@@ -81,7 +81,7 @@ class Protein(Polymer):
     def __init__(self, id, name, sequence, mass=0.):
         super().__init__(id, name, sequence, mass)
         self.__class__.number_of_proteins += 1 #  increase instance counter
-        self.mass = self.calculate_mass()
+        self.calculate_mass()
 
     # 9. implement the elongation feature described in the docstring. (__add__)
 
