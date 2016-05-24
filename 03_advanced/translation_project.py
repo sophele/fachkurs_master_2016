@@ -19,6 +19,18 @@ class BioMolecule(object):
     #    Use @property decorators as dicussed in the lecture
     # 2. In the setter methods check for the type of each attribute.
 
+    @property
+    def mass(self):
+        print("getter")
+        return self.__mass
+    
+    @mass.setter
+    def mass(self, value):
+        print("setter")
+        if not isinstance(value, int):
+            raise TypeError("Mass must be Integer.")
+        self.__mass = value
+
 class Polymer(BioMolecule):
     """
     A polymer molecule that has a sequence attribute which is
